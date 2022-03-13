@@ -1,0 +1,11 @@
+{
+  "name": "kinkhel_admin",
+  "version": "0.0.1",
+  "description": "Admin Backend For Everything Kinkhel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akdroid Nepal",
+  "license": "ISC"
+}
