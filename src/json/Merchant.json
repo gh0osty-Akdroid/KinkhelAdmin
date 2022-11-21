@@ -1,0 +1,23 @@
+[
+  
+  {
+    "id": 1,
+    "name": "Kirana/Shop",
+    "value": "Merchant-Kirana"
+  },{
+    "id": 2,
+    "name": "Distributor",
+    "value": "Merchant-Distributor"
+  },{
+    "id": 3,
+    "name": "Supermarket",
+    "value": "Merchant-Supermarket"
+  },{
+    "id": 4,
+    "name": "ECommerce",
+    "value": "Merchant-ECommerce"
+  }
+    
+
+  ]
+  
