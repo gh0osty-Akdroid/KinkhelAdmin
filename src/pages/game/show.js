@@ -32,11 +32,11 @@ function GameShow() {
 
   const handleEnableGame = (e) => {
     if (confirm(`Do you really want to enable ${e.name}?`)) {
-      adminTokenUrl().post("/enabled-games", { "game_id": data.id }).then((res) => {
+      adminTokenUrl().post("/enabled-games", { "game_id": e.id }).then((res) => {
         history(`/games/enabled-game`)
         SuccessNotification({ title: "Enabled!", message: `${e.name} has been enabled.` })
       }).catch(err => {
-        console.log(err)
+        ErrorHandler(err)
       })
     }
   }
@@ -92,17 +92,20 @@ function GameShow() {
                   <p className=" text-base mb-4">
                     <strong> Required Points: </strong> {data.charge}
                   </p>
+                  <p className=" text-base mb-4">
+                    <strong> Is Active: </strong> {data?.active ? <p>Active</p> : <p>In-Active</p>}
+                  </p>
+                  {
+                    !data?.AlternateGame ? <>
 
-                  <p className=" text-base mb-4">
-                    <strong> Number of Winners: </strong> {data.winning_numbers}
-                  </p>
-
-                  <p className=" text-base mb-4">
-                    <strong>  Opening Time: </strong> {new Date(data.opening_time).toLocaleString()}
-                  </p>
-                  <p className=" text-base mb-4">
-                    <strong> Closing Time: </strong> {new Date(data.closing_time).toLocaleString() }
-                  </p>
+                      <p className=" text-base mb-4">
+                        <strong>  Opening Time: </strong> {new Date(data.opening_time).toLocaleString()}
+                      </p>
+                      <p className=" text-base mb-4">
+                        <strong> Closing Time: </strong> {new Date(data.closing_time).toLocaleString()}
+                      </p>
+                      </> :""
+                  }
                   <p className=" text-base mb-4">
                     <strong> Recurring: </strong> {data.same_time ? "True" : "False"}
                   </p>

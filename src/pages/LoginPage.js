@@ -35,7 +35,8 @@ const LoginPage = () => {
         }
         console.log(body)
         adminUrl.post(`/login`, body).then((res) => {
-            console.log(res?.data?.data);
+            SuccessNotification({title:"Sent!", message:res?.data?.data})
+            console.log(res?.data?.data)
             setSuccess(true)
         }).catch(err => {
             ErrorHandler(err)
@@ -70,8 +71,6 @@ const LoginPage = () => {
             ErrorHandler(err)
         })
     }
-
-
 
 
 

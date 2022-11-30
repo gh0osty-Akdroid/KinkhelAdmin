@@ -20,6 +20,7 @@ function GameCategories() {
 
     adminTokenUrl().get(`/game-categories`).then((res) => {
       setData(res?.data?.data);
+      console.log(res?.data?.data)
       setRefresh(false)
     })
       .catch((err) => {

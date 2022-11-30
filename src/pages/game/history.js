@@ -41,8 +41,10 @@ const GamesHistory = () => {
     setTimeout(() => setLoading(false), 1000)
     adminTokenUrl().get(`iterations/${id}`).then((res) => {
       setData(res?.data?.data)
+      console.log(res?.data?.data)
       setRefresh(false)
     }).catch((err) => {
+      console.log(err)
       ErrorHandler(err)
     })
   }, [refresh])

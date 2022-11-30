@@ -5,9 +5,9 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 
-import { Select, ColorInput } from '@mantine/core';
+import { Select, ColorInput, PasswordInput } from '@mantine/core';
 
-registerPlugin(FilePondPluginImagePreview, FilePondPluginImageCrop,FilePondPluginFileEncode)
+registerPlugin(FilePondPluginImagePreview, FilePondPluginImageCrop, FilePondPluginFileEncode)
 
 import 'filepond/dist/filepond.min.css'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
@@ -37,14 +37,15 @@ function SiteCreate() {
   const [site_phone, SetPhone] = useState('')
   const [site_address, setSiteAddress] = useState('')
   const [site_email, setEmail] = useState('')
+  const [service_provider, setService] = useState('')
+  const [host_provider, setHost] = useState('')
+  const [port, setPort] = useState('')
+  const [user_email, setUserEmail] = useState('')
+  const [user_password, setPassword] = useState('')
 
   const [site_region, setRegion] = useState("")
 
-  const handleUser = () => {
-    if (ifuser === false) {
-      setIfUser(true)
-    } else setIfUser(false)
-  }
+
 
 
   const handleAddMerchant = (e) => {
@@ -61,9 +62,14 @@ function SiteCreate() {
       secondary_color: secondary_color,
       secondary_light_color: secondary_light_color,
       secondary_dark_color: secondary_dark_color,
-      logo:logo,
-      text_on_primary_color:text_on_primary_color,
-      text_on_secondary_color:text_on_secondary_color
+      logo: logo,
+      text_on_primary_color: text_on_primary_color,
+      text_on_secondary_color: text_on_secondary_color,
+      service_provider: service_provider,
+      host_provider: host_provider,
+      port: port,
+      user_email: user_email,
+      user_password: user_password
     }
 
     adminTokenUrl().post('/site-config', body).then((res) => {
@@ -159,6 +165,71 @@ function SiteCreate() {
                   placeholder="Site Address"
                 />
               </Grid.Col>
+              <Grid.Col span={6}>
+                <h2 className=" ml-5 block  text-sm font-bold mb-2">
+                  Site email service provider
+                </h2>
+
+                <input
+                  className="ml-5 mb-5 justify-between shadow text-gray-500 appearance-none border rounded w-11/12 py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  value={service_provider}
+                  onChange={(e => setService(e.target.value))}
+                  placeholder="Site service provider"
+                />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <h2 className=" ml-5 block  text-sm font-bold mb-2">
+                  Site email host provider
+                </h2>
+
+                <input
+                  className="ml-5 mb-5 justify-between shadow text-gray-500 appearance-none border rounded w-11/12 py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  value={host_provider}
+                  onChange={(e => setHost(e.target.value))}
+                  placeholder="Site email host provider"
+                />
+              </Grid.Col>
+              <Grid.Col span={3}>
+                <h2 className=" ml-5 block  text-sm font-bold mb-2">
+                  Site port
+                </h2>
+
+                <input
+                  className="ml-5 mb-5 justify-between shadow text-gray-500 appearance-none border rounded w-11/12 py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  value={port}
+                  onChange={(e => setPort(e.target.value))}
+                  placeholder="Site port"
+                />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <h2 className=" ml-5 block  text-sm font-bold mb-2">
+                  Site email address
+                </h2>
+
+                <input
+                  className="ml-5 mb-5 justify-between shadow text-gray-500 appearance-none border rounded w-11/12 py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  value={user_email}
+                  onChange={(e => setUserEmail(e.target.value))}
+                  placeholder="Site email address"
+                />
+              </Grid.Col>
+              <Grid.Col span={3}>
+                <h2 className=" ml-5 block  text-sm font-bold mb-2">
+                  Site email password
+                </h2>
+
+                <PasswordInput
+                  className="ml-5 mb-5 justify-between shadow text-gray-500 appearance-none border rounded w-10/12  leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  value={user_password}
+                  onChange={setPassword}
+                  placeholder="Site email password"
+                />
+              </Grid.Col>
               <Grid.Col span={12}>
                 <h2 className=" ml-5 block  text-sm font-bold mb-2">
                   Region
@@ -181,7 +252,7 @@ function SiteCreate() {
 
                 <ColorInput defaultValue="#C5D899"
                   onChange={setPrimary}
-                 className="ml-5 mb-5 justify-between shadow text-black  rounded w-11/12   leading-tight focus:outline-none focus:shadow-outline" format="hex" />
+                  className="ml-5 mb-5 justify-between shadow text-black  rounded w-11/12   leading-tight focus:outline-none focus:shadow-outline" format="hex" />
 
               </Grid.Col>
               <Grid.Col span={6}>
@@ -197,7 +268,7 @@ function SiteCreate() {
                   Primary Light Color
                 </h2>
 
-                <ColorInput  onChange={setPrimaryLight} defaultValue="#C5D899" className="ml-5 mb-5 justify-between shadow text-black  rounded w-11/12   leading-tight focus:outline-none focus:shadow-outline" format="hex" />
+                <ColorInput onChange={setPrimaryLight} defaultValue="#C5D899" className="ml-5 mb-5 justify-between shadow text-black  rounded w-11/12   leading-tight focus:outline-none focus:shadow-outline" format="hex" />
 
               </Grid.Col>
               <Grid.Col span={4}>
@@ -205,7 +276,7 @@ function SiteCreate() {
                   Secondary Color
                 </h2>
 
-                <ColorInput  onChange={setSec} defaultValue="#C5D899" className="ml-5 mb-5 justify-between shadow text-black  rounded w-11/12   leading-tight focus:outline-none focus:shadow-outline" format="hex" />
+                <ColorInput onChange={setSec} defaultValue="#C5D899" className="ml-5 mb-5 justify-between shadow text-black  rounded w-11/12   leading-tight focus:outline-none focus:shadow-outline" format="hex" />
               </Grid.Col>
               <Grid.Col span={4}>
                 <h2 className=" ml-5 block  text-sm font-bold mb-2">

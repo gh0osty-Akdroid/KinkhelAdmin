@@ -31,6 +31,11 @@ const Routes = [
         link: 'games/enabled-game'
       },
       {
+        name: 'Alternate Games',
+        icon: <MdGames />,
+        link: 'games/alternate-game'
+      },
+      {
         name: 'Games Category',
         icon: <MdGames />,
         link: 'games/category'

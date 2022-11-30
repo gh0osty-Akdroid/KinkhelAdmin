@@ -70,6 +70,7 @@ function MerchantCreate() {
       SuccessNotification({ title: "Added!", message: "Your merchant has been added." })
       history('/merchants')
     }).catch((err) => {
+      console.log(err)
 
       ErrorHandler(err)
     })

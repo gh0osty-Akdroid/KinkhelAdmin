@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 export const adminUrl = axios.create({
-    baseURL: `http://44.237.37.194:6001/api/v1/admin`,
+    baseURL: `http://44.237.37.194:6001:6001/api/v1/admin`,
   
 })  
 
@@ -28,7 +28,7 @@ export const adminTokenUrl =()=>{
     })
 } 
 
-
+4
 
 export const  GameImgUrl ="http://52.26.60.188:6969/"
 export const  ImgUrl ="http://44.237.37.194:6001/"

@@ -26,7 +26,7 @@ function PointBadge() {
     }).catch((err) => {
       ErrorHandler(err)
     })
-  }, [page,refresh])
+  }, [page, refresh])
 
 
 
@@ -40,7 +40,7 @@ function PointBadge() {
     }
   }
 
-  
+
 
 
 
@@ -64,11 +64,11 @@ function PointBadge() {
             <input type="text" id="table-search-users" className="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for Banners" />
           </div>
         </div>
-        {loading? <Loadings/>: 
+        {loading ? <Loadings /> :
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" style={{ height: "300", overflowY: "scroll" }}>
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-              <th scope="col" className="py-3 px-6">
+                <th scope="col" className="py-3 px-6">
                   Badge Name
                 </th>
                 <th scope="col" className="py-3 px-6">
@@ -81,36 +81,36 @@ function PointBadge() {
               </tr>
             </thead>
             <tbody>
-              {loading? <SmallLoader/> : 
-              data.length > 0 ?
-                data.map((e) =>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th className="py-4 px-6">
-                      {e.name}
-                    </th>
-                    
-                    
-                    <th className="py-4 px-6">
-                     {e.points}
-                    </th>
-                    <td className="py-4 px-6">
-                      <p onClick={() => handleDelete(e.id)}>Delete</p>
-                    </td>
+              {loading ? <SmallLoader /> :
+                data.length > 0 ?
+                  data.map((e) =>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <th className="py-4 px-6">
+                        {e.name}
+                      </th>
 
-                  </tr>
-                )
-                :
-                <><p className='p-5'>No data Found</p></>}
-                </tbody>
+
+                      <th className="py-4 px-6">
+                        {e.points}
+                      </th>
+                      <td className="py-4 px-6">
+                        <p onClick={() => handleDelete(e.id)}>Delete</p>
+                      </td>
+
+                    </tr>
+                  )
+                  :
+                  <><p className='p-5'>No data Found</p></>}
+            </tbody>
 
           </table>
-          }
-          
+        }
+
 
       </div>
       <div className='p-5 justify-center'>
-          <Pagination total={pages} onChange={setPage}/>
-          </div>
+        <Pagination total={pages} onChange={setPage} />
+      </div>
     </div >
   );
 }

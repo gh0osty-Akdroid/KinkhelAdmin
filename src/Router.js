@@ -49,6 +49,7 @@ import VoucherBatch from './pages/voucher/VoucherBatch';
 import PdfReader from './components/PdfReader';
 import MerchantVoucherBatch from './pages/Merchant/vouchers/MerchantVoucherBatch';
 import GamesHistory from './pages/game/history';
+import AlternateGame from './pages/game/AlternateGame';
 
 
 
@@ -114,6 +115,11 @@ function Router() {
             {
               element: <Outlet />, path: 'enabled-game', children: [
                 { element: <EnabledGame />, index: true },
+              ]
+            },
+            {
+              element: <Outlet />, path: 'alternate-game', children: [
+                { element: <AlternateGame />, index: true },
               ]
             },
             {

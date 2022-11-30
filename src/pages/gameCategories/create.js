@@ -66,8 +66,6 @@ function GameCategoryCreate() {
                   if (err) return console.log(err)
                   const base64 = item.getFileEncodeBase64String()
                   setImage(base64)
-
-
                 }}
                 allowFileTypeValidation={true} acceptedFileTypes={['image/*']}
               />
