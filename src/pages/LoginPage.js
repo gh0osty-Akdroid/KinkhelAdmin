@@ -26,7 +26,7 @@ const LoginPage = () => {
 
     const [success, setSuccess] = useState(false)
 
-    
+
     const handleLogin = (e) => {
         e.preventDefault()
         const body = {
@@ -35,7 +35,7 @@ const LoginPage = () => {
         }
         console.log(body)
         adminUrl.post(`/login`, body).then((res) => {
-            SuccessNotification({title:"Sent!", message:res?.data?.data})
+            SuccessNotification({ title: "Sent!", message: res?.data?.data })
             console.log(res?.data?.data)
             setSuccess(true)
         }).catch(err => {
@@ -52,7 +52,7 @@ const LoginPage = () => {
     const renderButton = (buttonProps) => {
         return (
             <button {...buttonProps}>
-                {buttonProps.remainingTime !== 0 ? `Please wait for ${buttonProps.remainingTime} sec to resend code.` : "Resend"}
+                {buttonProps.remainingTime !== 0 ? `Please wait for ${buttonProps.remainingTime} sec to resend code.` : <Button variant='outline'>Resend</Button>}
             </button>
         );
     };
@@ -75,22 +75,13 @@ const LoginPage = () => {
 
 
     const ResendOtp = (e) => {
-        adminUrl.post(`/resend-login-code/${log_phone}`).then((res) => {
+        adminUrl.post(`/resend-login-code/+${log_phone}`).then((res) => {
             SuccessNotification({ title: "Succeed", message: "Your OTP has been sent. Please wait a while..." })
         }).catch(err => {
             ErrorHandler(err)
 
         })
     }
-
-
-    const handlePassword = () => {
-        if (showPassword === true) setShowPassword(false)
-        else setShowPassword(true)
-    }
-
-
-
 
     return (
         <div style={{
@@ -109,7 +100,6 @@ const LoginPage = () => {
 
             })}>
                 <Image src='https://kinkhel.com/wp-content/uploads/2020/08/Transparent.png'></Image>
-
                 <div className="p-10 text-gray-200 bg-secondary-dark-bg rounded-3xl h-full">
                     <div className="mt-8 text-gray-200 bg-secondary-dark-bg">
                         <H1>Admin Login</H1>
@@ -124,9 +114,9 @@ const LoginPage = () => {
                                             </h2>
                                             <ReactPhoneInput
                                                 className="ml-5 mb-3 justify-between  white  rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" country={"np"} inputProps={{
-    required: true,
-    autoFocus: true
-  }}
+                                                    required: true,
+                                                    autoFocus: true
+                                                }}
                                                 defaultCountry="pl"
                                                 searchClass="search-class"
                                                 value={log_phone}
@@ -138,7 +128,7 @@ const LoginPage = () => {
                                                 Password
                                             </h2>
                                             <PasswordInput
-                                            required
+                                                required
                                                 className="ml-5  mb-3 justify-between shadow appearance-none border rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                                 placeholder="Password"
                                                 value={log_password}
@@ -152,10 +142,13 @@ const LoginPage = () => {
                                         :
                                         <form onSubmit={handleOtp}>
                                             <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} className="ml-5  mb-3 justify-between shadow appearance-none border rounded w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-                                            <Buttons className='ml-5' color="yellow" uppercase type='submit'>
-                                                Verify
-                                            </Buttons>
-                                            <ResendOTP className="ml-5" onResendClick={ResendOtp} maxTime={90} renderButton={renderButton} renderTime={renderTime} />
+                                            <div className='flex space-between'>
+                                                <Buttons className='ml-5' color="yellow" uppercase type='submit'>
+                                                    Verify
+                                                </Buttons>
+                                                <ResendOTP className="ml-5" onResendClick={ResendOtp} maxTime={90} renderButton={renderButton} renderTime={renderTime} />
+                                            </div>
+
                                         </form>
                                     }
 
