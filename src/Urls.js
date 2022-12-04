@@ -22,7 +22,7 @@ export const adminTokenUrl =()=>{
         headers:{
             "Authorization":`Bearer ${token}`,
             "Site" : site,
-            'Access-Control-Allow-Origin': 'http://44.237.37.194:6001/api/v1/admin'
+            'Access-Control-Allow-Origin': ['http://44.237.37.194:6001', "http://52.26.60.188:6969/"]
         }
       
     })

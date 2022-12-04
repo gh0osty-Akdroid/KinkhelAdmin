@@ -31,6 +31,11 @@ function Sites() {
           Add Sites
         </button>
       </Link>
+      <Link to="/site-setting">
+        <button className="text-gray-400 dark:text-gray-400 font-bold py-2 px-4 rounded mb-2 border">
+          Choose Sites
+        </button>
+      </Link>
       <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
         <div className="flex justify-center text-center pb-4 bg-white dark:bg-gray-900 p-5">
 

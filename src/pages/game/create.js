@@ -76,8 +76,6 @@ function GameCreate() {
     }
     if (alternate) {
       adminTokenUrl().post('/alternate-games', body).then((res) => {
-        console.log(res)
-        G
         SuccessNotification({ title: "Added!", message: "The Game has been added!" })
         history('/games/game')
       }).catch((err) => {

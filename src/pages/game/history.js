@@ -64,6 +64,7 @@ const GamesHistory = () => {
       setRefresh(true)
       setOpened(false)
     }).then((err)=>{
+      console.log(err)
       ErrorHandler(err)
     })
   }
