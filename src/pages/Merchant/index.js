@@ -83,10 +83,7 @@ function index() {
                   <th scope="col" className="py-3 px-6">
                     Phone
                   </th>
-                  <th scope="col" className="py-3 px-6">
-                    Has SubMerchant
-                  </th>
-
+              
                 </tr>
               </thead>
               <tbody>
@@ -111,9 +108,7 @@ function index() {
                           {e.store_phone}
                         </div>
                       </td>
-                      <td className="py-4 px-6">
-                        {e.merchant_id != null ? "Yes" : "No"}
-                      </td>
+                     
 
                     </tr>
 
