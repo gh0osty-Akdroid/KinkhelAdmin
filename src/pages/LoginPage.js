@@ -8,7 +8,7 @@ import { adminUrl } from '../Urls';
 import { ErrorNotification, SuccessNotification } from '../components/NotificationProvider';
 import { Box, Button, PasswordInput, Select } from '@mantine/core';
 import OTPInput, { ResendOTP } from "otp-input-react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchUserSuccess } from '../action/UserAction';
 import ErrorHandler from '../components/ErrorHandler';
 import axios from 'axios';
@@ -117,7 +117,7 @@ const LoginPage = () => {
                                                     required: true,
                                                     autoFocus: true
                                                 }}
-                                                defaultCountry="pl"
+
                                                 searchClass="search-class"
                                                 value={log_phone}
                                                 onChange={setPhone}
@@ -134,10 +134,15 @@ const LoginPage = () => {
                                                 value={log_password}
                                                 onChange={(e) => setPassword(e.target.value)}
                                             />
+                                            
+                                                <Buttons className='ml-5' color="yellow" uppercase type='submit'>
+                                                    Login
+                                                </Buttons>
 
-                                            <Buttons className='ml-5' color="yellow" uppercase type='submit'>
-                                                Login
-                                            </Buttons>
+                                                <Link to={'/forget-password'} className={"ml-5"}>
+                                                    Forget Password?
+                                                </Link>
+                                            
                                         </form>
                                         :
                                         <form onSubmit={handleOtp}>
@@ -148,7 +153,6 @@ const LoginPage = () => {
                                                 </Buttons>
                                                 <ResendOTP className="ml-5" onResendClick={ResendOtp} maxTime={90} renderButton={renderButton} renderTime={renderTime} />
                                             </div>
-
                                         </form>
                                     }
 

@@ -27,12 +27,13 @@ function CustomerShow() {
   }, [refresh,])
 
   useEffect(() => {
-    adminTokenUrl().get(`/played/user/${id}`).then((res) => {
-      setGames(res?.data?.data)
+    adminTokenUrl().get(`/played/user/${data?.phone}`).then((res) => {
+      setGames(res?.data?.data?.data)
     }).catch((err) => {
+      console.log(err)
       ErrorHandler(err)
     })
-  }, [])
+  }, [data])
 
   const handleUpdate = (e, banned) => {
     let body

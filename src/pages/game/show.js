@@ -7,6 +7,8 @@ import { Title } from '../../components/Header';
 import { Loaders, Loadings, SmallLoader } from '../../components/Loading';
 import { ErrorNotification, SuccessNotification } from '../../components/NotificationProvider';
 import { adminTokenUrl, GameImgUrl } from '../../Urls';
+const parse = require('html-react-parser');
+
 
 function GameShow() {
   const { id } = useParams()
@@ -81,7 +83,7 @@ function GameShow() {
                     <strong> Enabled: </strong> {data.enabled ? 'Disabled' : 'Enabled'}
                   </p>
                   <p className=" text-base mb-4">
-                    <strong> Description: </strong> {data.description}
+                    <strong> Description: </strong> {parse(data.description)}
                   </p>
                   <p className=" text-base mb-4">
                     <strong> Note: </strong> {data.notes}
@@ -93,7 +95,7 @@ function GameShow() {
                     <strong> Required Points: </strong> {data.charge}
                   </p>
                   <p className=" text-base mb-4">
-                    <strong> Is Active: </strong> {data?.active ? <p>Active</p> : <p>In-Active</p>}
+                    <strong> Is Active: </strong> {data?.active ? "Active" : "In-Active"}
                   </p>
                   {
                     !data?.AlternateGame ? <>
@@ -104,7 +106,7 @@ function GameShow() {
                       <p className=" text-base mb-4">
                         <strong> Closing Time: </strong> {new Date(data.closing_time).toLocaleString()}
                       </p>
-                      </> :""
+                    </> : ""
                   }
                   <p className=" text-base mb-4">
                     <strong> Recurring: </strong> {data.same_time ? "True" : "False"}
@@ -150,6 +152,13 @@ function GameShow() {
                       Go to winner history
                     </button>
                   </Link>
+                </div>
+                <div className="p-8">
+                  <Link to={`edit`}>
+                    <button type="submit" className="px-4 py-2 text-white bg-green-500 rounded text-black">
+                      Edit
+                    </button>
+                  </Link>
 
                 </div>
               </Grid.Col>
@@ -159,7 +168,7 @@ function GameShow() {
 
         </>}
         <Grid>
-          <Grid.Col sm={12}>
+          <Grid.Col sm={6}>
             <img className="rounded-t-lg" src={`${GameImgUrl}${data?.Category?.image}`} />
           </Grid.Col>
         </Grid>

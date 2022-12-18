@@ -46,7 +46,7 @@ const AddBanners = () => {
                             <label className="inline-block mb-2 ">
                                 Banner Image(jpg,png,svg,jpeg)
                             </label>
-                            <div className="text-black justify-between rounded w-11/12 py-2 px-3">
+                            <div className="text-black justify-between rounded  py-2 px-3">
                                 <FilePond
                                     files={files}
                                     allowFileEncode={true}
@@ -69,7 +69,7 @@ const AddBanners = () => {
                                         Banner Text
                                         </label>
                                         <input
-                                            className="text-black justify-between  border rounded w-11/12 py-2 px-3   "
+                                            className="text-black justify-between border rounded w-11/12 py-2 px-3"
                                             id="Cname"
                                             type="text"
                                             value={text}

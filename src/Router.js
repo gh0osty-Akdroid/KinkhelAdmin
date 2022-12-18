@@ -50,6 +50,7 @@ import PdfReader from './components/PdfReader';
 import MerchantVoucherBatch from './pages/Merchant/vouchers/MerchantVoucherBatch';
 import GamesHistory from './pages/game/history';
 import AlternateGame from './pages/game/AlternateGame';
+import ForgetPassword from './pages/ForgetPassword';
 
 
 
@@ -128,6 +129,7 @@ function Router() {
                 {
                   element: <Outlet />, path: ":id", children: [
                     { element: <GameShow />, index: true },
+                    { element: <GameEdit />, path:"edit" },
                     { element: <Outlet/>, path:'history', children:[
                       { element: <GamesHistory />, index:true },
                       { element: <UserPlayed />, path: ":uid/users" },
@@ -238,6 +240,10 @@ function Router() {
     {
       element: <LoginPage />,
       path: '/login',
+    },
+    {
+      element: < ForgetPassword/>,
+      path: '/forget-password',
     },
     {
       element: <NotFoundPage />,

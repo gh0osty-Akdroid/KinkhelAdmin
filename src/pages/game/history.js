@@ -52,15 +52,18 @@ const GamesHistory = () => {
 
 
   const handleAddWinner = (e) => {
+    console.log("asd")
     e.preventDefault()
     const body={
       name:name,
       image:image, 
       iteration_id:recent,
       other:others, 
-      info:info
+      info:info,
+      game_id:id
     }
     adminTokenUrl().post('/winners', body).then(res=>{
+      console.log(res)
       setRefresh(true)
       setOpened(false)
     }).then((err)=>{
@@ -79,7 +82,7 @@ const GamesHistory = () => {
     adminTokenUrl().post('/iterations', body).then(res=>{
       setRefresh(true)
       setOpeneed(false)
-    }).then((err)=>{
+    }).catch((err)=>{
       ErrorHandler(err)
     })
   }

@@ -173,7 +173,7 @@ const Vouchers = () => {
                 getCreateLabel={(query) => `+ Create ${query}`}
                 onCreate={(query) => {
                   const item = { value: slugify(query), label: query };
-                  setBatch((current) => [...current, item]);
+                  setBatch(() => [...batch, item]);
                   return item;
                 }}
               />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Pagination } from '@mantine/core';
+import { Button, Pagination } from '@mantine/core';
 import { Header } from '../../components';
 import { Loadings, SmallLoader } from '../../components/Loading';
 import { adminTokenUrl, GameImgUrl, ImgUrl } from '../../Urls';
@@ -31,8 +31,8 @@ function PointBadge() {
 
 
   const handleDelete = (e) => {
-    if (confirm("Want to delete this badge?")) {
-      adminTokenUrl().delete(`/badge/${e}`).then((data) => {
+    if (confirm(`Want to delete ${e.name} badge?`)) {
+      adminTokenUrl().delete(`/badge/${e.id}`).then((data) => {
         setRefresh(true)
       }).catch((err) => {
         ErrorHandler(err)
@@ -94,7 +94,7 @@ function PointBadge() {
                         {e.points}
                       </th>
                       <td className="py-4 px-6">
-                        <p onClick={() => handleDelete(e.id)}>Delete</p>
+                        <Button variant='outline' onClick={() => handleDelete(e)}>Delete</Button>
                       </td>
 
                     </tr>

@@ -37,7 +37,6 @@ function MerchantCreate() {
   const [store, setStore] = useState('')
   const [storephone, setStorePhone] = useState('')
   const [pan, setPan] = useState('')
-  const [password, setPassword] = useState('')
   const [role, setRole] = useState('')
   const [ifuser, setIfUser] = useState(false)
 
@@ -62,7 +61,6 @@ function MerchantCreate() {
       store_phone: storephone,
       email: email,
       role: role,
-      password: password,
       user_id: user,
       image: img
     }
@@ -124,7 +122,7 @@ function MerchantCreate() {
                     </h2>
 
                     <input
-                      className="ml-5 justify-between border text-gray-500 rounded w-10/12 py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                      className="ml-5 justify-between border text-gray-500 rounded w-11/12 py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
                       value={email}
                       onChange={(e => setEmail(e.target.value))}
@@ -138,7 +136,7 @@ function MerchantCreate() {
                     </h2>
 
                     <input
-                      className="ml-5 justify-between text-gray-500 shadow appearance-none border rounded  py-2 px-3 w-10/12 leading-tight focus:outline-none focus:shadow-outline"
+                      className="ml-5 justify-between text-gray-500 shadow appearance-none border rounded  py-2 px-3 w-11/12 leading-tight focus:outline-none focus:shadow-outline"
                       value={name}
                       onChange={(e => setName(e.target.value))}
                       required
@@ -153,28 +151,15 @@ function MerchantCreate() {
                     <h2 className=" ml-5 block  text-sm font-bold mb-2">
                       Phone
                     </h2>
-                    <ReactPhoneInput inputStyle={{width:"83.333%"}}
-                      className="ml-5 justify-between shadow text-gray-500 w-10/12 appearance-none rounded leading-tight focus:outline-none focus:shadow-outline"
+                    <ReactPhoneInput
+                      className="ml-5 justify-between shadow text-gray-500 appearance-none rounded leading-tight focus:outline-none focus:shadow-outline"
                       id="Store"
                       type="text"
+                      country={'np'}
                       required
                       value={phone}
                       onChange={(e)=>setPhone(`+${e}`)}
                       placeholder="Applicant Phone"
-                    />
-
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <h2 className=" ml-5 block  text-sm font-bold mb-2">
-                      Password
-                    </h2>
-
-                    <PasswordInput
-                      className="ml-5 justify-between shadow text-gray-500 appearance-none border rounded   w-10/12 leading-tight focus:outline-none focus:shadow-outline"
-                      value={password}
-                      required
-                      onChange={(e) => setPassword(e.currentTarget.value)}
-                      placeholder="Password"
                     />
 
                   </Grid.Col>
